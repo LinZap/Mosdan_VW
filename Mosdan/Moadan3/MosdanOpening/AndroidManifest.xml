@@ -1,0 +1,114 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="TV.Mosdan2"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:icon="@drawable/title2"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="activity.MosdanOpening"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="activity.Loading" >
+        </activity>
+        <activity
+            android:name="activity.View_container"
+            android:icon="@drawable/title2" >
+        </activity>
+        <activity
+            android:name="activity.Rx_set_view"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name="activity.Tx_set_view"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name="activity.Situation_set_view"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name="activity.Group_set_view"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity android:name="activity.Gconn_main" >
+        </activity>
+        <activity
+            android:name="activity.VW_main"
+            android:theme="@style/AppTheme" 
+              android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="activity.VW_situation"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity android:name="activity.Broadcast"
+              android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name="activity.welcome_broadcast" android:theme="@android:style/Theme.Holo.NoActionBar" 
+android:screenOrientation="portrait">
+        </activity>
+         <activity android:name="activity.welcome_vw" android:theme="@android:style/Theme.Holo.NoActionBar" 
+android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="activity.br_add1"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
+        </activity>
+        <activity
+            android:name="activity.br_add2"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
+        </activity>
+        <activity
+            android:name="activity.br_add3"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
+        </activity>
+        <activity
+            android:name="activity.VW_add1"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
+        </activity>
+        <activity
+            android:name="activity.VW_add2"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
+        </activity>
+        <activity
+            android:name="activity.VW_add3"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
+        </activity>
+        <activity
+            android:name="activity.VW_add4"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
+        </activity>
+        <activity
+            android:name="activity.VW_add5"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
+        </activity>
+        <activity
+            
+             android:name="activity.Noconn"></activity>
+        
+    </application>
+
+</manifest>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="情境設定" >
+        
+        <Preference
+            android:key="srctx"
+            android:title="來源" /><Preference android:key="member" android:title="成員" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

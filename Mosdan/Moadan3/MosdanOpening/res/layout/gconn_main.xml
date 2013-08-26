@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:fillViewport="true"
+    android:scrollbars="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#000000"
+            android:padding="3dp"
+            android:text="一般連線"
+            android:textColor="#FFFFFF" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center" >
+
+            <RelativeLayout
+                android:id="@+id/Gconn_brk_tx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/gconn_brk_tx_select"
+                android:padding="20dp" >
+
+                <ImageView
+                    android:id="@+id/ImageView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/w_tx" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/ImageView01"
+                    android:layout_marginLeft="14dp"
+                    android:layout_toRightOf="@+id/ImageView01"
+                    android:text="傳送端"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/gconn_tx_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/TextView02"
+                    android:maxWidth="110dp"
+                    android:singleLine="true"
+                    android:text="@string/select_first"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#FFFFFF"
+                    android:textSize="36dp" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/gconn_tx_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@drawable/more_tx_select" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/gconn_tx_inf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#4F4F4F"
+            android:padding="10dp" >
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TableRow
+                    android:id="@+id/TableRow07"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="《詳細資訊》"
+                        android:textColor="#ffffff" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow06"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView20"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="名稱："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_tx_subname"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="60dp"
+                        android:singleLine="true"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView25"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="傳送模式："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_tx_mode"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow08"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView24"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="ATI模式："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_tx_atimode"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TableRow
+                    android:id="@+id/TableRow02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView14"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="IP："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_tx_ip"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView12"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="MAC："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_tx_mac"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView18"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="Port："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/TextView17"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:text="Unknow"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView16"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="備註："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_tx_hint"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="60dp"
+                        android:singleLine="true"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/gconn_rx_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@drawable/more_rx_select" />
+
+            <RelativeLayout
+                android:id="@+id/Gconn_brk_rx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/gconn_brk_rx_select"
+                android:padding="20dp" >
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/w_rx" />
+
+                <TextView
+                    android:id="@+id/gconn_rx_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView1"
+                    android:layout_marginRight="14dp"
+                    android:layout_toLeftOf="@+id/imageView1"
+                    android:text="@string/rx_or_group"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/gconn_rx_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignTop="@+id/imageView1"
+                    android:maxWidth="110dp"
+                    android:singleLine="true"
+                    android:text="@string/select_first"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#FFFFFF"
+                    android:textSize="36dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/gconn_rx_inf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#4F4F4F"
+            android:padding="10dp" >
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TableRow
+                    android:id="@+id/TableRow15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="《詳細資訊》"
+                        android:textColor="#ffffff" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView34"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="名稱："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_rx_subname"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="60dp"
+                        android:singleLine="true"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView39"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="群組："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_rx_group"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView38"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="套用情境："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_rx_situation"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TableRow
+                    android:id="@+id/TableRow10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView28"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="IP："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_rx_ip"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow09"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView26"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="MAC："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_rx_mac"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView32"
+                        android:layout_width="45dp"
+                        android:layout_height="wrap_content"
+                        android:text="Port："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/TextView31"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:text="Unknow"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/TableRow11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView30"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:text="備註："
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/gconn_rx_hint"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:maxWidth="60dp"
+                        android:singleLine="true"
+                        android:text="@string/none"
+                        android:textColor="#FFFFFF" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/gconn_rx_member_inf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#4F4F4F"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="群組成員："
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/gconn_group_member"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:text="@string/none"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/gconn_btn_conn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/gconn_btn_conn"
+            android:text="連線" />
+
+        <Button
+            android:id="@+id/gconn_btn_save"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gconn_btn_save"
+            android:text="儲存設定" />
+    </LinearLayout>
+
+</ScrollView>

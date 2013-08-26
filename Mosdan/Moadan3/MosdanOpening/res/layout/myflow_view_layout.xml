@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ui.TitleFlowIndicator
+            android:id="@+id/viewflowindic"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            clipPadding="5dp"
+            customTypeface="fonts/Antic.ttf"
+            footerColor="@color/gconn_brk_tx"
+            footerLineHeight="2dp"
+            footerTriangleHeight="10dp"
+            selectedColor="@color/gconn_brk_tx"
+            selectedSize="16dp"
+            textColor="#FFFFFFFF"
+            textSize="16dp"
+            titlePadding="10dp" >
+        </ui.TitleFlowIndicator>
+    </LinearLayout>
+
+    <ui.ViewFlow
+        android:id="@+id/viewflow"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:duplicateParentState="true" >
+    </ui.ViewFlow>
+
+</LinearLayout>

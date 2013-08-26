@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ViewFlipper
+        android:id="@+id/flip_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <!--
+        View index
+        0. home
+        1. Rx 
+        2. Tx
+        3. Situation
+        
+        4. Group
+        -->
+
+        <include
+            android:id="@+id/include1"
+            layout="@layout/home" />
+
+        <include
+            android:id="@+id/map"
+            layout="@layout/receive" />
+
+        <include
+            android:id="@+id/map"
+            layout="@layout/transmitter" />
+
+        <!-- 下面兩個xml 以連結到新的 Activity 後續修正 -->
+
+        <include
+            android:id="@+id/map"
+            layout="@layout/situation" />
+
+        <include
+            android:id="@+id/map"
+            layout="@layout/group" />
+    </ViewFlipper>
+
+</LinearLayout>

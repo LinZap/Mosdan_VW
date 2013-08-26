@@ -1,0 +1,47 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" ><item
+        android:id="@+id/sync"
+        android:icon="@drawable/sync"
+        android:showAsAction="ifRoom|withText"
+        android:title="刷新">
+    </item>
+    <item
+        android:id="@+id/set"
+        android:icon="@drawable/set"
+        android:showAsAction="ifRoom|withText"
+        android:title="Setting">
+    </item>
+    <item
+        android:id="@+id/add"
+        android:icon="@drawable/add"
+        android:showAsAction="ifRoom|withText"
+        android:title="新增接收端群組">
+    </item>
+    <item
+        android:id="@+id/save"
+        android:icon="@drawable/save"
+        android:showAsAction="ifRoom|withText"
+        android:title="Save">
+    </item>
+    <item
+        android:id="@+id/status_main"
+        android:showAsAction="ifRoom|withText"
+        android:title="情境"/>
+    <item
+        android:id="@+id/status_arrow"
+        android:icon="@drawable/arrow"
+        android:showAsAction="ifRoom|withText"
+        android:title=""/>
+    <item
+        android:id="@+id/gconn_refresh"
+        android:icon="@drawable/sync"
+        android:showAsAction="always"
+        android:title="刷新"/>
+    <item
+        android:id="@+id/VW_refresh"
+        android:icon="@drawable/sync"
+        android:showAsAction="always"
+        android:title="刷新"/>
+    
+    
+
+</menu>

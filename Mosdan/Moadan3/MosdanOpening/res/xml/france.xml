@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="接收端設定" >
+        <EditTextPreference
+            android:dialogMessage="自訂一個名稱"
+            android:dialogTitle="名稱"
+            android:key="name"
+            android:title="名稱" />
+
+        <CheckBoxPreference
+            android:key="used_situation"
+            android:title="套用情境" />
+
+        <ListPreference
+            android:dependency="used_situation"
+            android:key="select_situation"
+            android:title="選擇情境" />
+
+        <ui.Picker_location
+            android:dependency="used_situation"
+            android:key="select_location"
+            android:summary=""
+            android:title="顯示位置" />
+
+        <ui.Picker_tune
+            android:dependency="used_situation"
+            android:key="select_tune"
+            android:title="微調" />
+
+        <ui.Picker_scale
+            android:dependency="used_situation"
+            android:key="select_scale"
+            android:title="延展" />
+
+        
+        <ui.Picker_tdelay
+            android:dependency="used_situation"
+            android:key="select_tdelay"
+            android:title="撕裂延遲" />
+
+        <CheckBoxPreference
+            android:key="usbmode"
+            android:summary="機器可使用外接USB裝置"
+            android:title="USB Mode" />
+
+        <EditTextPreference
+            android:dialogTitle="新增備註"
+            android:key="hint"
+            android:title="新增備註" />
+
+        <PreferenceScreen
+            android:key="information"
+            android:title="詳細資訊" >
+            <Preference
+                android:key="ipaddress"
+                android:title="IP Address" />
+            <Preference
+                android:key="macaddress"
+                android:title="MAC" />
+            <Preference
+                android:key="port"
+                android:title="Port" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>

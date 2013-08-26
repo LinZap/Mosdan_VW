@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:scrollbars="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E6DCD5"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#92725A"
+            android:paddingBottom="34dp"
+            android:paddingTop="13dp" >
+
+            <TextView
+                android:id="@+id/tvwalltext1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/tvwalltext1"
+                android:textColor="#e8e6e4"
+                android:textSize="40sp" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvwalltext1"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/vw" />
+
+            <TextView
+                android:id="@+id/tvwalltext2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/imageView1"
+                android:layout_below="@+id/tvwalltext1"
+                android:text="@string/tvwalltext2"
+                android:textColor="#e8e6e4"
+                android:textSize="40sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:text="套用的情境"
+                android:textColor="#333333"
+                android:textSize="14dp" />
+
+            <Spinner
+                android:id="@+id/VW_spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/spinner_selector"
+                android:prompt="@string/chose"
+                android:spinnerMode="dialog" />
+
+            <Button
+                android:id="@+id/VW_btn_setSituation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/set_situation_select"
+                android:text="@string/setSituation"
+                android:textColor="#ffffff" />
+            
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="情境設定" >
+        <Preference
+            android:key="name"
+            android:title="索引" >
+        </Preference>
+        <Preference
+            android:key="srctx"
+            android:title="來源" />
+        
+        <Preference
+            android:key="bulid"
+            android:title="組成" /><Preference android:key="member" android:title="成員" />
+        <Preference
+            android:key="drop"
+            android:title="排列" />
+
+        <ui.Picker_multihost
+            android:key="onepicker"
+            android:summary="無"
+            android:title="多主機模式" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

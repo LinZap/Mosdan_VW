@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="傳送端設定" >
+        <EditTextPreference
+            android:dialogMessage="自訂一個名稱"
+            android:dialogTitle="名稱"
+            android:key="name"
+            android:title="Name" />
+
+        <ListPreference
+            android:entries="@array/Tx_mode"
+            android:entryValues="@array/Tx_mode"
+            android:key="tx_mode"
+            android:title="傳送模式" />
+        <ListPreference
+            android:entries="@array/ATI_mode"
+            android:entryValues="@array/ATI_mode"
+            android:key="ati_mode"
+            android:title="ATI模式" />
+
+        <EditTextPreference
+            android:dialogTitle="新增備註"
+            android:key="hint"
+            android:title="新增備註" />
+
+        <PreferenceScreen
+            android:key="information"
+            android:title="詳細資訊" >
+            <Preference
+                android:key="ipaddress"
+                android:title="IP Address" />
+            <Preference
+                android:key="macaddress"
+                android:title="MAC" />
+            <Preference
+                android:key="port"
+                android:title="Port" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+
+</PreferenceScreen>

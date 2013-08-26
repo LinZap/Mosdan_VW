@@ -1,0 +1,14 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Light" />
+
+    <style name="HoloButton.Borderless" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/barrepeat</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:actionMenuTextAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:padding">1dip</item>
+        <item name="android:minHeight">48dip</item>
+        <item name="android:minWidth">64dip</item>
+    </style>
+
+</resources>
