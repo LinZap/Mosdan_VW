@@ -55,7 +55,7 @@ public class br_add2 extends Activity {
 		// if(Data.Rx_neme)
 
 		isRx = new boolean[Data.Rx_name.length];
-		memberIndex = Data.get_Situation_Member_idx(Data.Situation_name[0]);
+		memberIndex = Data.get_Situation_Member_idx("1");
 
 
 		adapter = new ArrayAdapter<String>(this,
@@ -189,17 +189,63 @@ public class br_add2 extends Activity {
 			@Override
 			public void run() {
 
-				
-				
-				
-				
-				
 				// 設定Rx所屬情境
 
 				for (int i = 0; i < isRx.length; i++) {
 
 					if (isRx[i]) {
 						final String mac = Data.Rx_mac[i];
+	
+						Mycommand b = new Mycommand() {
+							@Override
+							public void command() {
+
+								br_add2.this.runOnUiThread(new Runnable() {
+									public void run() {
+										PDialog.setMessage("正在設定: " + mac
+												+ "水平位置");
+									}
+								});
+
+								Turbo_View turbo_View = new Turbo_View();
+								turbo_View.VW_Rx_locY(mac, 1);
+							}
+						};
+
+						b.start();
+						try {
+							b.join();
+						} catch (InterruptedException e) {
+							go_to_noconn();
+						}
+
+						
+						
+						Mycommand c = new Mycommand() {
+							@Override
+							public void command() {
+
+								br_add2.this.runOnUiThread(new Runnable() {
+									public void run() {
+										PDialog.setMessage("正在設定: " + mac
+												+ "垂直位置");
+									}
+								});
+
+								Turbo_View turbo_View = new Turbo_View();
+								turbo_View.VW_Rx_locX(mac, 1);
+							}
+						};
+
+						c.start();
+						try {
+							c.join();
+						} catch (InterruptedException e) {
+							go_to_noconn();
+						}
+
+				
+						
 						Mycommand a = new Mycommand() {
 							@Override
 							public void command() {
@@ -220,8 +266,9 @@ public class br_add2 extends Activity {
 						try {
 							a.join();
 						} catch (InterruptedException e) {
-							e.printStackTrace();
+							go_to_noconn();
 						}
+						Data.Rx_sitsution[i] = "1";
 
 					} else {
 						if (Data.Rx_sitsution[i].equals(Data.Situation_name[0])) {
@@ -239,16 +286,16 @@ public class br_add2 extends Activity {
 										}
 									});
 									Turbo_View turbo_View = new Turbo_View();
-									turbo_View.VW_Rx_set(mac, "1");
+									turbo_View.VW_Rx_set(mac, "0");
 								}
 							};
 							a.start();
 							try {
 								a.join();
 							} catch (InterruptedException e) {
-								e.printStackTrace();
+								go_to_noconn();
 							}
-							Data.Rx_sitsution[i] = "1";
+							Data.Rx_sitsution[i] = "0";
 						}
 					}
 
@@ -274,7 +321,7 @@ public class br_add2 extends Activity {
 					try {
 						a.join();
 					} catch (InterruptedException e1) {
-						e1.printStackTrace();
+						go_to_noconn();
 					}
 
 					
@@ -300,7 +347,7 @@ public class br_add2 extends Activity {
 					try {
 						b.join();
 					} catch (InterruptedException e) {
-						e.printStackTrace();
+						go_to_noconn();
 					}
 				}
 				
@@ -347,6 +394,24 @@ public class br_add2 extends Activity {
 
 	}
 
+	private void go_to_noconn() {
+
+		br_add2.this.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				Toast.makeText(br_add2.this, "沒有網路連線", Toast.LENGTH_LONG)
+						.show();
+
+				Intent intent = new Intent();
+				intent.setClass(br_add2.this, Noconn.class);
+				startActivity(intent);
+				finish();
+
+			}
+		});
+
+	}
+	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 

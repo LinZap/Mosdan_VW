@@ -84,129 +84,126 @@ public class Loading extends Activity {
 
 				st.start();
 				try {
-					st.join();
+					st.join(5000);
 				} catch (InterruptedException e1) {
-					e1.printStackTrace();
+					go_to_noconn();
 				}
 
-				if (status.equals("404")) {
+				if (status != null)
 
-					go_to_noconn();
+				{
+					if (status.equals("404")) {
 
-				} else {
-
-					Mycommand sr = new Mycommand() {
-						@Override
-						public void command() {
-
-							loadingActivity.runOnUiThread(new Runnable() {
-								@Override
-								public void run() {
-									tvProgressCircle.setText("正在搜尋接收端");
-								}
-							});
-
-							Turbo_View tv = new Turbo_View();
-							tv.Do_searchRx();
-
-						}
-					};
-					sr.start();
-					try {
-						sr.join();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-
-					loadingActivity.runOnUiThread(new Runnable() {
-						@Override
-						public void run() {
-							tvProgressCircle.setText("正在更新資料");
-
-						}
-					});
-
-				
-
-					Thread sqlThread = new Thread() {
-						@Override
-						public void run() {
-							Data.getTxData();
-						}
-
-					};
-					sqlThread.start();
-					try {
-						sqlThread.join();
-					} catch (InterruptedException e) {
 						go_to_noconn();
-					}
 
-					sqlThread = new Thread() {
-						@Override
-						public void run() {
-							Data.getRxData();
+					} else {
+
+						Mycommand sr = new Mycommand() {
+							@Override
+							public void command() {
+
+								loadingActivity.runOnUiThread(new Runnable() {
+									@Override
+									public void run() {
+										tvProgressCircle.setText("正在搜尋接收端");
+									}
+								});
+
+								Turbo_View tv = new Turbo_View();
+								tv.Do_searchRx();
+
+							}
+						};
+						sr.start();
+						try {
+							sr.join();
+						} catch (InterruptedException e) {
+							e.printStackTrace();
 						}
 
-					};
-					sqlThread.start();
-					try {
-						sqlThread.join();
-					} catch (InterruptedException e) {
-						go_to_noconn();
-					}
-					sqlThread = new Thread() {
-						@Override
-						public void run() {
-							Data.getSituationData();
+						loadingActivity.runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								tvProgressCircle.setText("正在更新資料");
+
+							}
+						});
+
+						Thread sqlThread = new Thread() {
+							@Override
+							public void run() {
+								Data.getTxData();
+							}
+
+						};
+						sqlThread.start();
+						try {
+							sqlThread.join();
+						} catch (InterruptedException e) {
+							go_to_noconn();
 						}
 
-					};
-					sqlThread.start();
-					try {
-						sqlThread.join();
-					} catch (InterruptedException e) {
-						go_to_noconn();
-					}
-					sqlThread = new Thread() {
-						@Override
-						public void run() {
-							Data.getVWData();
-						}
+						sqlThread = new Thread() {
+							@Override
+							public void run() {
+								Data.getRxData();
+							}
 
-					};
-					sqlThread.start();
-					try {
-						sqlThread.join();
-					} catch (InterruptedException e) {
-						go_to_noconn();
-					}
-					sqlThread = new Thread() {
-						@Override
-						public void run() {
-							Data.getGconnData();
+						};
+						sqlThread.start();
+						try {
+							sqlThread.join();
+						} catch (InterruptedException e) {
+							go_to_noconn();
 						}
-					};
-					sqlThread.start();
-					try {
-						sqlThread.join();
-						
-					} catch (InterruptedException e) {
-						go_to_noconn();
-					}
-					
-					
-					
+						sqlThread = new Thread() {
+							@Override
+							public void run() {
+								Data.getSituationData();
+							}
 
-					
+						};
+						sqlThread.start();
+						try {
+							sqlThread.join();
+						} catch (InterruptedException e) {
+							go_to_noconn();
+						}
+						sqlThread = new Thread() {
+							@Override
+							public void run() {
+								Data.getVWData();
+							}
+
+						};
+						sqlThread.start();
+						try {
+							sqlThread.join();
+						} catch (InterruptedException e) {
+							go_to_noconn();
+						}
+						sqlThread = new Thread() {
+							@Override
+							public void run() {
+								Data.getGconnData();
+							}
+						};
+						sqlThread.start();
+						try {
+							sqlThread.join();
+
+						} catch (InterruptedException e) {
+							go_to_noconn();
+						}
 
 						Intent intent = new Intent();
 						intent.setClass(Loading.this, View_container.class);
 						startActivity(intent);
 						finish();
 
-				
-
+					}
+				} else {
+					go_to_noconn();
 				}
 
 			}

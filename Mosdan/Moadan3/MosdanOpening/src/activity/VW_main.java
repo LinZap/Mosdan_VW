@@ -99,9 +99,9 @@ public class VW_main extends Activity {
 			Bundle bundle = new Bundle();
 			bundle.putString(
 					"name",
-					(VW_Spinner.getSelectedItem().toString() != null) ? VW_Spinner
+					(VW_Spinner.getSelectedItem() != null) ? VW_Spinner
 							.getSelectedItem().toString() : "auto-save");
-			Intent intent = new Intent();
+			Intent intent = new Intent(VW_main.this,VW_situation.class);
 			intent.putExtras(bundle);
 			startActivity(intent);
 		}
@@ -141,7 +141,7 @@ public class VW_main extends Activity {
 					try {
 						a.join();
 					} catch (InterruptedException e) {
-						e.printStackTrace();
+						go_to_noconn();
 					}
 					// 重新搜尋並刷新 T R S 3端的資料,更新UI資料
 					if (mode == -1) {save_VW(ss);
@@ -176,7 +176,7 @@ public class VW_main extends Activity {
 		try {
 			b.join();
 		} catch (InterruptedException e1) {
-			e1.printStackTrace();
+			go_to_noconn();
 		}
 		// step3 載入RX端
 		Mycommand c = new Mycommand() {
@@ -314,7 +314,7 @@ public class VW_main extends Activity {
 		// 重新更新Spinner資料
 		case R.id.VW_refresh:
 
-			if (VW_Spinner.getSelectedItem() != null)
+			//if (VW_Spinner.getSelectedItem() != null)
 				refersh_spinner(null);
 			break;
 
@@ -468,7 +468,7 @@ public class VW_main extends Activity {
 							try {
 								a.join();
 							} catch (InterruptedException e) {
-								e.printStackTrace();
+								go_to_noconn();
 							}
 						}
 
@@ -523,7 +523,7 @@ public class VW_main extends Activity {
 				try {
 					a.join();
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					go_to_noconn();
 				}
 
 				// 刷新Spinner
@@ -559,6 +559,7 @@ public class VW_main extends Activity {
 					sqlThread.join();
 				} catch (InterruptedException e) {
 					Log.i("下達搜尋電視牆情境時發生錯誤", e.getMessage());
+					
 				}
 
 				vw_name = Data.getVW_BR_name(0);

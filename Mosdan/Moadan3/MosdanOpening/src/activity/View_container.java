@@ -1,10 +1,11 @@
 package activity;
 
-
 import shared.ui.actionscontentview.ActionsContentView;
 import ui.ExpandAdapter;
 import ui.ListviewAdapter;
+import ui.Mycommand;
 import Data.Data;
+import Internet.Turbo_View;
 import TV.Mosdan2.R;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -28,6 +29,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 public class View_container extends Activity {
@@ -195,42 +197,43 @@ public class View_container extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 
 		if (keyCode == KeyEvent.KEYCODE_BACK)
-			if(Data.view_display!=0){
-				
+			if (Data.view_display != 0) {
+
 				Data.view_display = 0;
 				viewActionsContentView.showContent();
 				viewflipper.setDisplayedChild(0);
 				change_view_doSomething(0);
 
 				return false;
+			} else {
+
+				final AlertDialog.Builder d = new AlertDialog.Builder(this);
+				d.setTitle("離開");
+				d.setMessage("確定離開本程式嗎?");
+				d.setNegativeButton("確定",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+
+								View_container.this.finish();
+								dialog.dismiss();
+							}
+
+						});
+				d.setNeutralButton("取消", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+
+						dialog.dismiss();
+					}
+
+				});
+				d.show();
+
+				return false;
 			}
-			else{
-			
-			final AlertDialog.Builder d = new AlertDialog.Builder(this);
-			d.setTitle("離開");
-			d.setMessage("確定離開本程式嗎?");
-			d.setNegativeButton("確定", new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-
-					View_container.this.finish();
-					dialog.dismiss();
-				}
-
-			});
-			d.setNeutralButton("取消", new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-
-					dialog.dismiss();
-				}
-
-			});
-			d.show();		
-			
-			return false;
-			}
-		return super.onKeyDown(keyCode, event);		
+		return super.onKeyDown(keyCode, event);
 	}
 
 	private OnClickListener onClickListener = new OnClickListener() {
@@ -265,13 +268,11 @@ public class View_container extends Activity {
 
 			// Tryit button
 			case R.id.textView5:
-				
-				
+
 				Intent intent3 = new Intent();
 				intent3.setClass(View_container.this, Broadcast.class);
 				startActivity(intent3);
 
-				
 				break;
 
 			// GroupRadio button
@@ -300,14 +301,69 @@ public class View_container extends Activity {
 		switch (Data.view_display) {
 		// Rx
 		case 1:
-			Rxadapter.ref(Data.Rx_name, Data.Rx_status);
+			refListView(1);
 			break;
 		// Tx
 		case 2:
-			Txadapter.ref(Data.Tx_name, Data.Tx_status);
+			refListView(2);
 			break;
 		}
 		super.onResume();
+	}
+
+	private void refListView(final int i) {
+
+		new Thread() {
+
+			@Override
+			public void run() {
+				Thread a = new Thread() {
+					@Override
+					public void run() {
+						if (i == 1)
+							Data.getRxData();
+						else if (i == 2)
+							Data.getTxData();
+					}
+				};
+
+				a.start();
+				try {
+					a.join();
+				} catch (InterruptedException e) {
+					go_to_noconn();
+				}
+
+				if (i == 1) {
+
+					View_container.this.runOnUiThread(new Runnable() {
+
+						@Override
+						public void run() {
+							Rxadapter.ref(Data.Rx_name, Data.Rx_status);
+							Toast.makeText(View_container.this, "更新完成",
+									Toast.LENGTH_SHORT).show();
+						}
+					});
+
+				} else if (i == 2) {
+
+					View_container.this.runOnUiThread(new Runnable() {
+
+						@Override
+						public void run() {
+							Txadapter.ref(Data.Tx_name, Data.Tx_status);
+							Toast.makeText(View_container.this, "更新完成",
+									Toast.LENGTH_SHORT).show();
+						}
+					});
+
+				}
+
+			}
+
+		}.start();
+
 	}
 
 	// 改變目前顯示的畫面, view = 欲前往的畫面;
@@ -447,8 +503,6 @@ public class View_container extends Activity {
 
 	};
 
-
-
 	// MenuBar List
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -492,6 +546,7 @@ public class View_container extends Activity {
 						try {
 							network.join();
 						} catch (InterruptedException e) {
+							go_to_noconn();
 						}
 						Rxadapter.ref(Data.Rx_name, Data.Rx_status);
 						sync.setEnabled(true);
@@ -513,6 +568,7 @@ public class View_container extends Activity {
 						try {
 							network.join();
 						} catch (InterruptedException e) {
+							go_to_noconn();
 						}
 						Txadapter.ref(Data.Tx_name, Data.Tx_status);
 						sync.setEnabled(true);
@@ -528,4 +584,23 @@ public class View_container extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
+
+	private void go_to_noconn() {
+
+		View_container.this.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				Toast.makeText(View_container.this, "沒有網路連線", Toast.LENGTH_LONG)
+						.show();
+
+				Intent intent = new Intent();
+				intent.setClass(View_container.this, Noconn.class);
+				startActivity(intent);
+				finish();
+
+			}
+		});
+
+	}
+
 }

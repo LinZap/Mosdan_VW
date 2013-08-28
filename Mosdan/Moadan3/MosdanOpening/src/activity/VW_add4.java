@@ -170,14 +170,26 @@ public class VW_add4 extends Activity {
 			for (int j = 0; j < column; j++) {
 
 				if (pushMap[i][j].getChildCount() > 0) {
-					final int x = j + 1;
-					final int y = i + 1;
+					
+					
+					
+					final int x = (j + 1);
+					final int y = (i + 1);
+					
+					
 					final String rx_key = ((TextView) pushMap[i][j]
 							.getChildAt(0)).getText().toString();
 					final String mac = Data.Rx_mac[hintRxIndex.get(rx_key)];
+					
+					
+					
+					
 					if (!rx_key.equals(contrastMap[i][j])) {
+						
 						contrastMap[i][j] = rx_key;
 
+						
+						
 						Mycommand a = new Mycommand() {
 							@Override
 							public void command() {
@@ -191,6 +203,7 @@ public class VW_add4 extends Activity {
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
+									
 						Mycommand b = new Mycommand() {
 							@Override
 							public void command() {
@@ -205,12 +218,29 @@ public class VW_add4 extends Activity {
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
+						
+						
+						
 
 					}
 				}
 
 			}
 		}
+		
+		log_inf();
+		
+	}
+
+	private void log_inf() {
+	for(int i=0;i<contrastMap.length;i++)
+	{
+		
+		for(int j=0;j<contrastMap[0].length;j++){
+			
+		}
+	}
+		
 	}
 
 	private void findView() {

@@ -57,8 +57,6 @@ public class VW_add5 extends Activity {
 		d.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				Toast.makeText(VW_add5.this, editText.getText().toString(),
-						Toast.LENGTH_LONG).show();
 				if (editText.getText().toString().equals("")) {
 					showDialog_nameVW();
 				} else {

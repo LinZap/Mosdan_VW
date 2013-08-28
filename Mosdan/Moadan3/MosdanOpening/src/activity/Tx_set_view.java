@@ -30,7 +30,7 @@ public class Tx_set_view extends Activity {
 		context = this;
 		tx_set_viewActivity = this;
 		Bundle bun = this.getIntent().getExtras();
-		int index = bun.getInt("index");
+		index = bun.getInt("index");
 
 		FragmentManager fm = this.getFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();

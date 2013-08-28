@@ -264,18 +264,7 @@ public class Broadcast extends Activity {
 
 	};
 
-	// 返回鍵鎖定
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-			if (isLoading)
-				return false;
-
-		}
-		return super.onKeyDown(keyCode, event);
-	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
@@ -311,6 +300,7 @@ public class Broadcast extends Activity {
 		case R.id.VW_refresh:
 
 			refersh_ListView();
+			broadcastListView.setOnItemClickListener(OnItemClickListener);
 			break;
 
 		case 0:
@@ -581,9 +571,12 @@ public class Broadcast extends Activity {
 				} catch (InterruptedException e) {
 					Log.i("下達搜尋電視牆情境時發生錯誤", e.getMessage());
 				}
+				
 				Broadcast.BRAdapter.ref(Data.getVW_BR_name(1), Data.VW_pic);
+				
 			}
 		});
+		
 	}
 
 	private void go_to_noconn() {
@@ -602,5 +595,17 @@ public class Broadcast extends Activity {
 			}
 		});
 
+	}
+	// 返回鍵鎖定
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+			if (isLoading)
+				return false;
+
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 }
