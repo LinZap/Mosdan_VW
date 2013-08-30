@@ -123,7 +123,7 @@ public class Situation_set_view extends Activity {
 				Situation_set_view.this.runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
-						Toast.makeText(VW_main.context, "儲存完成",
+						Toast.makeText(Situation_set_view.this, "儲存完成",
 								Toast.LENGTH_LONG).show();
 					}
 				});

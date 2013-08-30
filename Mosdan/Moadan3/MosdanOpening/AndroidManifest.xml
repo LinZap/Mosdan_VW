@@ -49,21 +49,26 @@
         </activity>
         <activity
             android:name="activity.VW_main"
-            android:theme="@style/AppTheme" 
-              android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
         </activity>
         <activity
             android:name="activity.VW_situation"
             android:theme="@style/AppTheme" >
         </activity>
-        <activity android:name="activity.Broadcast"
-              android:screenOrientation="portrait" >
+        <activity
+            android:name="activity.Broadcast"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="activity.welcome_broadcast" android:theme="@android:style/Theme.Holo.NoActionBar" 
-android:screenOrientation="portrait">
+        <activity
+            android:name="activity.welcome_broadcast"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
         </activity>
-         <activity android:name="activity.welcome_vw" android:theme="@android:style/Theme.Holo.NoActionBar" 
-android:screenOrientation="portrait">
+        <activity
+            android:name="activity.welcome_vw"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" >
         </activity>
         <activity
             android:name="activity.br_add1"
@@ -105,10 +110,11 @@ android:screenOrientation="portrait">
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.NoActionBar" >
         </activity>
-        <activity
-            
-             android:name="activity.Noconn"></activity>
-        
+        <activity android:name="activity.Noconn" >
+        </activity>
+        <activity android:name="activity.Setting" 
+              android:theme="@android:style/Theme.Holo">
+        </activity>
     </application>
 
 </manifest>

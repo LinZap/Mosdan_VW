@@ -12,12 +12,13 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
+import Data.Data;
 import android.util.Log;
 
 public class SQL
 {
 
-	private final String call_search = "http://169.254.2.2/query.php";
+	private final String call_search = "http://" +Data.system_server+"/query.php";
 	private HttpPost httpPost;
 	private List<NameValuePair> Arg;
 	public SQL()

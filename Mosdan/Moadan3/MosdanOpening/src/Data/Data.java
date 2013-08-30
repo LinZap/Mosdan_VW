@@ -1,6 +1,8 @@
 package Data;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.util.Log;
 import Internet.SQL;
@@ -12,6 +14,8 @@ public class Data {
 
 	// system command lock
 	private static boolean lock = false;
+	// system auto to get data
+	public static boolean isauto_getData = false;
 
 	// only for a thread used
 	public static synchronized boolean islock() {
@@ -25,6 +29,10 @@ public class Data {
 
 	public static String[] Gconn_title = { "儲存的連線", "一般連線", "接收端群組" };
 	public static String[] VW_title = { "電視牆情境", "已儲存" };
+
+	// system server path
+	public static String system_server = "169.254.2.2";
+
 	// public clock to dalay command
 	// public static Timer publicTimer;
 	// system first loading
@@ -81,7 +89,7 @@ public class Data {
 	// Situation Data
 	// 30組
 	public static String[][] Situation_data;
-	public static String[] Situation_name = { "1", "2" ,"3", "4" };
+	public static String[] Situation_name = { "1", "2", "3", "4" };
 	// 來源
 	public static String[] Situation_srctx = { "x15185185", "541514", "None",
 			"None" };
@@ -105,97 +113,97 @@ public class Data {
 			"d516147147" };
 
 	// VW
-	public static String[][] VW_data ={{"br%26%26%26Ggfddff" , "1" , "001703A0007F" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "2" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "3" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "4" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "5" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "6" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "7" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "8" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "9" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "10" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "11" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "12" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "13" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "14" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "15" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "16" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "17" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "18" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "19" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "20" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "21" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "22" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "23" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "24" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "25" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "26" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "27" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "28" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "29" , "None" , "1" , "1" , "0" , },
-		{"br%26%26%26Ggfddff" , "30" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "1" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "2" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "3" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "4" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "5" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "6" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "7" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "8" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "9" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "10" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "11" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "12" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "13" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "14" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "15" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "16" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "17" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "18" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "19" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "20" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "21" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "22" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "23" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "24" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "25" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "26" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "27" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "28" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "29" , "None" , "1" , "1" , "0" , },
-		{"defaultmosdan" , "30" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "1" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "2" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "3" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "4" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "5" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "6" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "7" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "8" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "9" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "10" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "11" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "12" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "13" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "14" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "15" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "16" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "17" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "18" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "19" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "20" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "21" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "22" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "23" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "24" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "25" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "26" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "27" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "28" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "29" , "None" , "1" , "1" , "0" , },
-		{"vw%26%26%26hello" , "30" , "None" , "1" , "1" , "0" , },
-};
+	public static String[][] VW_data = {
+			{ "br%26%26%26Ggfddff", "1", "001703A0007F", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "2", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "3", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "4", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "5", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "6", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "7", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "8", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "9", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "10", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "11", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "12", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "13", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "14", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "15", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "16", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "17", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "18", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "19", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "20", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "21", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "22", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "23", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "24", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "25", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "26", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "27", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "28", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "29", "None", "1", "1", "0", },
+			{ "br%26%26%26Ggfddff", "30", "None", "1", "1", "0", },
+			{ "defaultmosdan", "1", "None", "1", "1", "0", },
+			{ "defaultmosdan", "2", "None", "1", "1", "0", },
+			{ "defaultmosdan", "3", "None", "1", "1", "0", },
+			{ "defaultmosdan", "4", "None", "1", "1", "0", },
+			{ "defaultmosdan", "5", "None", "1", "1", "0", },
+			{ "defaultmosdan", "6", "None", "1", "1", "0", },
+			{ "defaultmosdan", "7", "None", "1", "1", "0", },
+			{ "defaultmosdan", "8", "None", "1", "1", "0", },
+			{ "defaultmosdan", "9", "None", "1", "1", "0", },
+			{ "defaultmosdan", "10", "None", "1", "1", "0", },
+			{ "defaultmosdan", "11", "None", "1", "1", "0", },
+			{ "defaultmosdan", "12", "None", "1", "1", "0", },
+			{ "defaultmosdan", "13", "None", "1", "1", "0", },
+			{ "defaultmosdan", "14", "None", "1", "1", "0", },
+			{ "defaultmosdan", "15", "None", "1", "1", "0", },
+			{ "defaultmosdan", "16", "None", "1", "1", "0", },
+			{ "defaultmosdan", "17", "None", "1", "1", "0", },
+			{ "defaultmosdan", "18", "None", "1", "1", "0", },
+			{ "defaultmosdan", "19", "None", "1", "1", "0", },
+			{ "defaultmosdan", "20", "None", "1", "1", "0", },
+			{ "defaultmosdan", "21", "None", "1", "1", "0", },
+			{ "defaultmosdan", "22", "None", "1", "1", "0", },
+			{ "defaultmosdan", "23", "None", "1", "1", "0", },
+			{ "defaultmosdan", "24", "None", "1", "1", "0", },
+			{ "defaultmosdan", "25", "None", "1", "1", "0", },
+			{ "defaultmosdan", "26", "None", "1", "1", "0", },
+			{ "defaultmosdan", "27", "None", "1", "1", "0", },
+			{ "defaultmosdan", "28", "None", "1", "1", "0", },
+			{ "defaultmosdan", "29", "None", "1", "1", "0", },
+			{ "defaultmosdan", "30", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "1", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "2", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "3", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "4", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "5", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "6", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "7", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "8", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "9", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "10", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "11", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "12", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "13", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "14", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "15", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "16", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "17", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "18", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "19", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "20", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "21", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "22", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "23", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "24", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "25", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "26", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "27", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "28", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "29", "None", "1", "1", "0", },
+			{ "vw%26%26%26hello", "30", "None", "1", "1", "0", }, };
 	public static Integer[] VW_pic;
 
 	/**
@@ -333,19 +341,15 @@ public class Data {
 	// 取得以儲存的 電視牆 情境 列表
 	public static boolean getVWData() {
 
+		SQL s = new SQL();
+		VW_data = s.getResult("select * from vw_sit_group");
+		if (VW_data == null) {
+			return false;
+		} else if (VW_data[0][0].equals("404")) {
+			VW_null();
+			return true;
+		}
 
-			SQL s = new SQL();
-			VW_data = s.getResult("select * from vw_sit_group");
-			if (VW_data == null) {
-				return false;
-			} else if (VW_data[0][0].equals("404")) {
-				VW_null();
-				return true;
-			}
-			
-			
-
-		
 		return true;
 	}
 
@@ -418,13 +422,13 @@ public class Data {
 		Data.Rx_tdelay = new Integer[row_num];
 		Data.Rx_tx = new String[row_num];
 		Data.Rx_group = new String[row_num];
-		
+
 		for (int i = 0; i < row_num; i++) {
 			Data.Rx_mac[i] = Data.Rx_data[i][0];
 			Data.Rx_ip[i] = Data.Rx_data[i][1];
 
-			Log.i("RX_IP"+i,Data.Rx_data[i][1]);
-			
+			Log.i("RX_IP" + i, Data.Rx_data[i][1]);
+
 			if (Data.Rx_data[i][2].equals("s_srv_on"))
 				Data.Rx_status[i] = R.drawable.connection;
 			else if (Data.Rx_data[i][2].equals("s_loss"))
@@ -589,4 +593,97 @@ public class Data {
 		parseSituation_Member(situation_name);
 		return group_rx_idx;
 	}
+
+	// 自動刷新資料
+	public static void auto_refreah_data() {
+		
+		
+		new Thread() {
+			@Override
+			public void run() {
+
+				if (auto_refreah_data_Timer != null)
+					auto_refreah_data_Timer.cancel();
+				if (auto_refreah_data_TimerTask != null)
+					auto_refreah_data_TimerTask.cancel();
+
+				auto_refreah_data_Timer = new Timer();
+				auto_refreah_data_TimerTask = new TimerTask() {
+
+					@Override
+					public void run() {
+						
+						if(isauto_getData){					
+							Thread a = new Thread(){
+								@Override
+								public void run(){
+									getRxData();
+								}};
+							a.start();
+							try {
+								a.join();
+							} catch (InterruptedException e) {}
+								
+							Thread b = new Thread(){
+								@Override
+								public void run(){
+									getTxData();
+								}};
+							b.start();
+							try {
+								b.join();
+							} catch (InterruptedException e) {}
+							
+							
+							Thread c = new Thread(){
+								@Override
+								public void run(){
+									getSituationData();
+								}};
+							c.start();
+							try {
+								c.join();
+							} catch (InterruptedException e) {}
+							
+							
+							Thread d = new Thread(){
+								@Override
+								public void run(){
+									getVWData();
+								}};
+							d.start();
+							try {
+								d.join();
+							} catch (InterruptedException e) {}			
+							
+							
+							Thread f = new Thread(){
+								@Override
+								public void run(){
+									getGconnData();
+								}};
+							f.start();
+							try {
+								f.join();
+							} catch (InterruptedException e) {}			
+							
+							parseRxData();
+							parseTxData();
+							parseSituationData();
+							parseGconnData();
+							
+						}			
+					}
+				};
+
+				
+				
+				auto_refreah_data_Timer.schedule(auto_refreah_data_TimerTask, 1000, 15000);
+
+			}
+		}.start();
+	}
+
+	private static Timer auto_refreah_data_Timer;
+	private static TimerTask auto_refreah_data_TimerTask;
 }

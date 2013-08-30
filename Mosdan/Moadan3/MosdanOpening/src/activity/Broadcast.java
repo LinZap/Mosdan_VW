@@ -301,6 +301,7 @@ public class Broadcast extends Activity {
 
 			refersh_ListView();
 			broadcastListView.setOnItemClickListener(OnItemClickListener);
+			br_name = Data.getVW_BR_name(1);
 			break;
 
 		case 0:

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:holo="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Notice for file(s):"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="ActionsContentView code"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#dddddd"
+            android:padding="5pt"
+            android:text="Copyright 2013 Steven Rudenko \n \n Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); \n you may not use this file except in compliance with the License. \n \n You may obtain a copy of the License at \t http://www.apache.org/licenses/LICENSE-2.0 \n \n Unless required by applicable law or agreed to in writing, softwared istributed under the License is distributed on an &quot;AS IS&quot; BASIS,WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.See the License for the pecific language governing permissions and limitations under the License."
+            android:textColor="#444444"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="View Flow for Android code"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#dddddd"
+            android:padding="5pt"
+            android:text="Copyright 2013 Patrik Åkerfeldt \n \n Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); \n you may not use this file except in compliance with the License. \n \n You may obtain a copy of the License at \t http://www.apache.org/licenses/LICENSE-2.0 \n \n Unless required by applicable law or agreed to in writing, softwared istributed under the License is distributed on an &quot;AS IS&quot; BASIS,WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.See the License for the pecific language governing permissions and limitations under the License."
+            android:textColor="#444444"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+</ScrollView>

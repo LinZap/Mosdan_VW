@@ -3,12 +3,13 @@ package activity;
 import shared.ui.actionscontentview.ActionsContentView;
 import ui.ExpandAdapter;
 import ui.ListviewAdapter;
-import ui.Mycommand;
+import ui.Setting_Perference;
 import Data.Data;
-import Internet.Turbo_View;
 import TV.Mosdan2.R;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -57,6 +58,9 @@ public class View_container extends Activity {
 		// all of element
 		findView();
 		Data.view_display = Data.view_Home;
+
+	
+
 		viewflipper.setDisplayedChild(Data.view_display);
 		// Data.record.add(Data.view_display);
 		// top
@@ -75,7 +79,7 @@ public class View_container extends Activity {
 		setFontFamily();
 		setAdapter();
 		setSideList();
-
+		Set_Expandablelist_Record(0, 0);
 	}
 
 	private void setFontFamily() {
@@ -197,7 +201,10 @@ public class View_container extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 
 		if (keyCode == KeyEvent.KEYCODE_BACK)
-			if (Data.view_display != 0) {
+
+			if (viewActionsContentView.isActionsShown()) {
+				viewActionsContentView.showContent();
+			} else if (Data.view_display != 0) {
 
 				Data.view_display = 0;
 				viewActionsContentView.showContent();
@@ -205,7 +212,9 @@ public class View_container extends Activity {
 				change_view_doSomething(0);
 
 				return false;
-			} else {
+			}
+
+			else {
 
 				final AlertDialog.Builder d = new AlertDialog.Builder(this);
 				d.setTitle("離開");
@@ -300,12 +309,20 @@ public class View_container extends Activity {
 	protected void onResume() {
 		switch (Data.view_display) {
 		// Rx
+		case 0:
+			Set_Expandablelist_Record(0, 0);
+			break;
 		case 1:
+			Set_Expandablelist_Record(0, 1);
 			refListView(1);
 			break;
 		// Tx
 		case 2:
+			Set_Expandablelist_Record(0, 2);
 			refListView(2);
+
+		default:
+			Set_Expandablelist_Record(0, 0);
 			break;
 		}
 		super.onResume();
@@ -380,38 +397,11 @@ public class View_container extends Activity {
 
 	}
 
+	// 設定點選背景,橘線+黑底
 	public void Set_Expandablelist_Record(int Group, int Child) {
 		Data.groupSelected = Group;
 		Data.childSelected = Child;
 		sideListAdpter.notifyDataSetChanged();
-	}
-
-	public void Go_Back_For_Expandablelist(int event) {
-		switch (event) {
-		case 0:
-			Set_Expandablelist_Record(0, 0);
-
-			break;
-		case 1:
-			Set_Expandablelist_Record(1, 1);
-
-			break;
-		case 2:
-			Set_Expandablelist_Record(1, 0);
-
-			break;
-		case 3:
-			Set_Expandablelist_Record(0, 1);
-
-			break;
-		case 4:
-			Set_Expandablelist_Record(0, 2);
-
-			break;
-		case 5:
-
-			break;
-		}
 	}
 
 	private void change_view_doSomething(int view) {
@@ -474,12 +464,21 @@ public class View_container extends Activity {
 					break;
 				case 1:
 					Set_Expandablelist_Record(groupPosition, childPosition);
+					Intent intent = new Intent();
+					intent.setClass(View_container.this, Gconn_main.class);
+					startActivity(intent);
 					break;
 				case 2:
 					Set_Expandablelist_Record(groupPosition, childPosition);
+					Intent intent2 = new Intent();
+					intent2.setClass(View_container.this, VW_main.class);
+					startActivity(intent2);
 					break;
 				case 3:
 					Set_Expandablelist_Record(groupPosition, childPosition);
+					Intent intent3 = new Intent();
+					intent3.setClass(View_container.this, Broadcast.class);
+					startActivity(intent3);
 					break;
 				}
 				break;
@@ -524,6 +523,14 @@ public class View_container extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+
+		case R.id.set:
+
+			Intent intent = new Intent();
+			intent.setClass(View_container.this, Setting.class);
+			startActivity(intent);
+
+			return super.onOptionsItemSelected(item);
 		case android.R.id.home:
 			if (viewActionsContentView.isActionsShown())
 				viewActionsContentView.showContent();

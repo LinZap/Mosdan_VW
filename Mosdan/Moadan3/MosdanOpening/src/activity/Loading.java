@@ -195,7 +195,12 @@ public class Loading extends Activity {
 						} catch (InterruptedException e) {
 							go_to_noconn();
 						}
-
+						
+						
+						// 自動更新資料
+						Data.auto_refreah_data();
+						
+						
 						Intent intent = new Intent();
 						intent.setClass(Loading.this, View_container.class);
 						startActivity(intent);

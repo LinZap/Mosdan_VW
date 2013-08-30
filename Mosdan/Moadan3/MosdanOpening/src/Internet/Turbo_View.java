@@ -11,6 +11,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
+import Data.Data;
 import android.util.Log;
 
 /**
@@ -20,8 +21,9 @@ import android.util.Log;
  */
 
 public class Turbo_View {
-	private final boolean DEBUG = true; 
-	private final String uri = "http://169.254.2.2/call_serv.php";
+	private final boolean DEBUG = true;
+	private final String uri = "http://" + Data.system_server
+			+ "/call_serv.php";
 	private ArrayList<NameValuePair> arg;
 
 	/**
@@ -32,7 +34,8 @@ public class Turbo_View {
 	public String Do_searchTx() {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "search tx"));
-		if(DEBUG)Log.i("cmd","search tx");
+		if (DEBUG)
+			Log.i("cmd", "search tx");
 		return execute(arg);
 	}
 
@@ -44,7 +47,8 @@ public class Turbo_View {
 	public String Do_searchRx() {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "search rx"));
-		if(DEBUG)Log.i("cmd","search rx");
+		if (DEBUG)
+			Log.i("cmd", "search rx");
 		return execute(arg);
 	}
 
@@ -57,14 +61,15 @@ public class Turbo_View {
 	 */
 	public String TR_power(String mac, boolean boo) {
 		arg = new ArrayList<NameValuePair>();
-		if (boo)
-			{arg.add(new BasicNameValuePair("cmd", "access " + mac + " y"));
-			if(DEBUG)Log.i("cmd","access " + mac + " y");
-			}
-		else
-			{arg.add(new BasicNameValuePair("cmd", "access " + mac + " n"));
-			if(DEBUG)Log.i("cmd","access " + mac + " n");
-			}
+		if (boo) {
+			arg.add(new BasicNameValuePair("cmd", "access " + mac + " y"));
+			if (DEBUG)
+				Log.i("cmd", "access " + mac + " y");
+		} else {
+			arg.add(new BasicNameValuePair("cmd", "access " + mac + " n"));
+			if (DEBUG)
+				Log.i("cmd", "access " + mac + " n");
+		}
 		return execute(arg);
 	}
 
@@ -79,7 +84,8 @@ public class Turbo_View {
 	public String TR_rename(String mac, String new_name) {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "comment " + mac + " " + new_name));
-		if(DEBUG)Log.i("cmd","comment " + mac + " " + new_name);
+		if (DEBUG)
+			Log.i("cmd", "comment " + mac + " " + new_name);
 		return execute(arg);
 	}
 
@@ -94,8 +100,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "explain_t " + mac + " "
 				+ explain));
-		if(DEBUG)Log.i("cmd","explain_t " + mac + " "
-				+ explain);
+		if (DEBUG)
+			Log.i("cmd", "explain_t " + mac + " " + explain);
 		return execute(arg);
 	}
 
@@ -109,7 +115,8 @@ public class Turbo_View {
 	public String TR_delete(String mac) {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "delete " + mac));
-		if(DEBUG)Log.i("cmd","delete " + mac);
+		if (DEBUG)
+			Log.i("cmd", "delete " + mac);
 		return execute(arg);
 	}
 
@@ -123,7 +130,8 @@ public class Turbo_View {
 	public String TR_reset(String mac) {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "default " + mac));
-		if(DEBUG)Log.i("cmd","default " + mac);
+		if (DEBUG)
+			Log.i("cmd", "default " + mac);
 		return execute(arg);
 	}
 
@@ -136,7 +144,8 @@ public class Turbo_View {
 	public String TR_reboot(String mac) {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "reboot " + mac));
-		if(DEBUG)Log.i("cmd","reboot " + mac);
+		if (DEBUG)
+			Log.i("cmd", "reboot " + mac);
 		return execute(arg);
 	}
 
@@ -149,16 +158,18 @@ public class Turbo_View {
 	 */
 	public String Tx_setMode(String Tx_mac, int mode) {
 		arg = new ArrayList<NameValuePair>();
-		if (mode == 0)
-			{arg.add(new BasicNameValuePair("cmd", "txmode " + Tx_mac
+		if (mode == 0) {
+			arg.add(new BasicNameValuePair("cmd", "txmode " + Tx_mac
 					+ " Graphic"));
-			if(DEBUG)Log.i("cmd","txmode " + Tx_mac
-					+ " Graphic");
-			}
-			
-		else
-			{arg.add(new BasicNameValuePair("cmd", "txmode " + Tx_mac + " Video"));
-			if(DEBUG)Log.i("cmd","txmode " + Tx_mac + " Video");}
+			if (DEBUG)
+				Log.i("cmd", "txmode " + Tx_mac + " Graphic");
+		}
+
+		else {
+			arg.add(new BasicNameValuePair("cmd", "txmode " + Tx_mac + " Video"));
+			if (DEBUG)
+				Log.i("cmd", "txmode " + Tx_mac + " Video");
+		}
 		return execute(arg);
 	}
 
@@ -183,7 +194,8 @@ public class Turbo_View {
 		}
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "atimode " + Tx_mac + " " + m));
-		if(DEBUG)Log.i("cmd", "atimode " + Tx_mac + " " + m);
+		if (DEBUG)
+			Log.i("cmd", "atimode " + Tx_mac + " " + m);
 		return execute(arg);
 	}
 
@@ -200,8 +212,8 @@ public class Turbo_View {
 			Tx_mac = "None";
 		arg.add(new BasicNameValuePair("cmd", "connect " + Rx_mac + " "
 				+ Tx_mac));
-		if(DEBUG)Log.i("cmd", "connect " + Rx_mac + " "
-				+ Tx_mac);
+		if (DEBUG)
+			Log.i("cmd", "connect " + Rx_mac + " " + Tx_mac);
 		return execute(arg);
 	}
 
@@ -217,8 +229,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_osd " + Rx_ip + " "
 				+ String.valueOf(str)));
-		if(DEBUG)Log.i("cmd", "vw_osd " + Rx_ip + " "
-				+ String.valueOf(str));
+		if (DEBUG)
+			Log.i("cmd", "vw_osd " + Rx_ip + " " + String.valueOf(str));
 		return execute(arg);
 
 	}
@@ -239,8 +251,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "sit_tr_add " + name + " "
 				+ Rx_mac + " " + Tx_mac));
-		if(DEBUG)Log.i("cmd", "sit_tr_add " + name + " "
-				+ Rx_mac + " " + Tx_mac);
+		if (DEBUG)
+			Log.i("cmd", "sit_tr_add " + name + " " + Rx_mac + " " + Tx_mac);
 		return execute(arg);
 	}
 
@@ -253,7 +265,8 @@ public class Turbo_View {
 	public String RxSituation_start(String name) {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "sit_tr_load " + name));
-		if(DEBUG)Log.i("cmd", "sit_tr_load " + name);
+		if (DEBUG)
+			Log.i("cmd", "sit_tr_load " + name);
 		return execute(arg);
 	}
 
@@ -269,8 +282,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "sit_tr_add " + name + " "
 				+ Rx_mac));
-		if(DEBUG)Log.i("cmd", "sit_tr_add " + name + " "
-				+ Rx_mac);
+		if (DEBUG)
+			Log.i("cmd", "sit_tr_add " + name + " " + Rx_mac);
 		return execute(arg);
 
 	}
@@ -286,8 +299,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "rx_group_update " + Rx_mac + " "
 				+ name));
-		if(DEBUG)Log.i("cmd", "rx_group_update " + Rx_mac + " "
-				+ name);
+		if (DEBUG)
+			Log.i("cmd", "rx_group_update " + Rx_mac + " " + name);
 		return execute(arg);
 	}
 
@@ -300,7 +313,8 @@ public class Turbo_View {
 	public String Group_clear(String name) {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "rx_group_clear  " + name));
-		if(DEBUG)Log.i("cmd", "rx_group_clear  " + name);
+		if (DEBUG)
+			Log.i("cmd", "rx_group_clear  " + name);
 		return execute(arg);
 	}
 
@@ -317,8 +331,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "rx_group_conn " + name + " "
 				+ Tx_mac));
-		if(DEBUG)Log.i("cmd", "rx_group_conn " + name + " "
-				+ Tx_mac);
+		if (DEBUG)
+			Log.i("cmd", "rx_group_conn " + name + " " + Tx_mac);
 		return execute(arg);
 	}
 
@@ -332,7 +346,8 @@ public class Turbo_View {
 	public String VW_Rx_set(String Rx_mac, String VWid) {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_group " + Rx_mac + " " + VWid));
-		if(DEBUG)Log.i("cmd", "vw_group " + Rx_mac + " " + VWid);
+		if (DEBUG)
+			Log.i("cmd", "vw_group " + Rx_mac + " " + VWid);
 		return execute(arg);
 
 	}
@@ -348,7 +363,8 @@ public class Turbo_View {
 	public String VW_Rx_locY(String Rx_mac, int y) {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_row " + Rx_mac + " " + y));
-		if(DEBUG)Log.i("cmd", "vw_row " + Rx_mac + " " + y);
+		if (DEBUG)
+			Log.i("cmd", "vw_row " + Rx_mac + " " + y);
 		return execute(arg);
 	}
 
@@ -362,7 +378,8 @@ public class Turbo_View {
 	public String VW_Rx_locX(String Rx_mac, int x) {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_column " + Rx_mac + " " + x));
-		if(DEBUG)Log.i("cmd", "vw_column " + Rx_mac + " " + x);
+		if (DEBUG)
+			Log.i("cmd", "vw_column " + Rx_mac + " " + x);
 		return execute(arg);
 	}
 
@@ -378,8 +395,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_hTune " + Rx_mac + " "
 				+ String.valueOf(num)));
-		if(DEBUG)Log.i("cmd", "vw_hTune " + Rx_mac + " "
-				+ String.valueOf(num));
+		if (DEBUG)
+			Log.i("cmd", "vw_hTune " + Rx_mac + " " + String.valueOf(num));
 		return execute(arg);
 	}
 
@@ -395,8 +412,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_vTune " + Rx_mac + " "
 				+ String.valueOf(num)));
-		if(DEBUG)Log.i("cmd", "vw_hScale " + Rx_mac + " "
-				+ String.valueOf(num));
+		if (DEBUG)
+			Log.i("cmd", "vw_hScale " + Rx_mac + " " + String.valueOf(num));
 		return execute(arg);
 	}
 
@@ -411,9 +428,9 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_hScale " + Rx_mac + " "
 				+ String.valueOf(num)));
-		
-		if(DEBUG)Log.i("cmd", "vw_hScale " + Rx_mac + " "
-				+ String.valueOf(num));
+
+		if (DEBUG)
+			Log.i("cmd", "vw_hScale " + Rx_mac + " " + String.valueOf(num));
 		return execute(arg);
 	}
 
@@ -428,8 +445,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_vScale " + Rx_mac + " "
 				+ String.valueOf(num)));
-		if(DEBUG)Log.i("cmd", "vw_vScale " + Rx_mac + " "
-				+ String.valueOf(num));
+		if (DEBUG)
+			Log.i("cmd", "vw_vScale " + Rx_mac + " " + String.valueOf(num));
 		return execute(arg);
 	}
 
@@ -444,8 +461,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_tDelay " + Rx_mac + " "
 				+ String.valueOf(num)));
-		if(DEBUG)Log.i("cmd", "vw_tDelay " + Rx_mac + " "
-				+ String.valueOf(num));
+		if (DEBUG)
+			Log.i("cmd", "vw_tDelay " + Rx_mac + " " + String.valueOf(num));
 		return execute(arg);
 	}
 
@@ -462,10 +479,11 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_group_srctx " + VWid + " "
 				+ Tx_mac));
-		if(DEBUG)Log.i("cmd", "vw_group_srctx " + VWid + " "
-				+ Tx_mac);
+		if (DEBUG)
+			Log.i("cmd", "vw_group_srctx " + VWid + " " + Tx_mac);
 		return execute(arg);
 	}
+
 	/**
 	 * 指定一個情境ID，設定其畫面橫軸(水平Y)組成數量
 	 * 
@@ -477,8 +495,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_group_row " + VWid + " "
 				+ num));
-		if(DEBUG)Log.i("cmd", "vw_group_row " + VWid + " "
-				+ num);
+		if (DEBUG)
+			Log.i("cmd", "vw_group_row " + VWid + " " + num);
 		return execute(arg);
 	}
 
@@ -493,8 +511,8 @@ public class Turbo_View {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_group_column " + VWid + " "
 				+ num));
-		if(DEBUG)Log.i("cmd", "vw_group_column " + VWid + " "
-				+ num);
+		if (DEBUG)
+			Log.i("cmd", "vw_group_column " + VWid + " " + num);
 		return execute(arg);
 	}
 
@@ -506,12 +524,13 @@ public class Turbo_View {
 	 * @return 不為 404 字串 則表示執行成功
 	 */
 	public String VW_multiHost(String VWid, int num) {
-		
+
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_group_multihost " + VWid
 				+ " " + String.valueOf(num)));
-		if(DEBUG)Log.i("cmd","vw_group_multihost " + VWid
-				+ " " + String.valueOf(num));
+		if (DEBUG)
+			Log.i("cmd",
+					"vw_group_multihost " + VWid + " " + String.valueOf(num));
 		return execute(arg);
 	}
 
@@ -524,7 +543,8 @@ public class Turbo_View {
 	public String VW_save(String name) {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_sit_save " + name));
-		if(DEBUG)Log.i("cmd", "vw_sit_save " + name);
+		if (DEBUG)
+			Log.i("cmd", "vw_sit_save " + name);
 		return execute(arg);
 	}
 
@@ -537,7 +557,8 @@ public class Turbo_View {
 	public String VW_delete(String name) {
 		arg = new ArrayList<NameValuePair>();
 		arg.add(new BasicNameValuePair("cmd", "vw_sit_delete " + name));
-		if(DEBUG)Log.i("cmd", "vw_sit_delete " + name);
+		if (DEBUG)
+			Log.i("cmd", "vw_sit_delete " + name);
 		return execute(arg);
 	}
 
@@ -549,8 +570,9 @@ public class Turbo_View {
 	 */
 	public String VW_load(String name) {
 		arg = new ArrayList<NameValuePair>();
-		arg.add(new BasicNameValuePair("cmd", "vw_sit_load " + name ));
-		if(DEBUG)Log.i("cmd", "vw_sit_load " + name);
+		arg.add(new BasicNameValuePair("cmd", "vw_sit_load " + name));
+		if (DEBUG)
+			Log.i("cmd", "vw_sit_load " + name);
 		return execute(arg);
 	}
 
@@ -565,7 +587,8 @@ public class Turbo_View {
 		try {
 			arg = new ArrayList<NameValuePair>();
 			arg.add(new BasicNameValuePair("cmd", "sys_import start"));
-			if(DEBUG)Log.i("cmd", "sys_import start");
+			if (DEBUG)
+				Log.i("cmd", "sys_import start");
 			execute(arg);
 
 			for (String s : argment) {

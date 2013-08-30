@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <PreferenceCategory android:title="系統" >
+        <EditTextPreference
+            android:dialogMessage="連線到伺服器，使用以下的IP位置"
+            android:dialogTitle="伺服器位置"
+            android:key="domain"
+            android:title="伺服器位置" />
+
+        <CheckBoxPreference
+            android:key="syncdata"
+            android:summary="在有連上伺服器時 , 自動更新傳送端與接收端資料"
+            android:title="自動更新資料" />
+
+        <Preference android:title="使用說明書" android:key="manual"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="關於" >
+        <Preference
+            android:summary="0.3.1"
+            android:title="版本" />
+        <Preference
+            android:summary="TurboView v0.4"
+            android:title="使用伺服器" />
+        <Preference
+            android:summary="牟士登國際股份有限公司"
+            android:title="版權所有" />
+
+        <ui.Opensource
+            android:key="opensource"
+            android:title="開放原始碼授權" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

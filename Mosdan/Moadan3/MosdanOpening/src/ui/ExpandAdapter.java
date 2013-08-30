@@ -16,14 +16,14 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
 	private LayoutInflater mInflater;
 
 	// group1,2 text and icon data
-	private String[] group1_text = { "首頁", "情境設定", "群組設定", "新增" },
+	private String[] group1_text = { "首頁", "一般連線", "電視牆情境", "群組廣播" },
 			group2_text = { "傳送端", "接收端" };
-	private int[] group1_icon = { R.drawable.home, R.drawable.setblue,
-			R.drawable.groupsky, R.drawable.add }, group2_icon = {
+	private int[] group1_icon = { R.drawable.home, R.drawable.gconn_icon2,
+			R.drawable.vw_icon2, R.drawable.vw_icon2}, group2_icon = {
 			R.drawable.txred, R.drawable.rxorange };
 
 	// group name
-	private String[] group_name = { "使用者", "機器" };
+	private String[] group_name = { "功能", "機器" };
 
 	// elements on view
 	private ImageView mIcon;
